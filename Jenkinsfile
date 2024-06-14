@@ -3,14 +3,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'echo "Hello world"'
-      }
-    }
-
-    stage('Testing') {
-      steps {
-        sh '''echo "testing..."
-echo "testing..."'''
+        git(url: 'https://github.com/towojcik/S3-bucket-webhost', branch: 'main')
       }
     }
 
