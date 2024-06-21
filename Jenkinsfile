@@ -33,9 +33,7 @@ pipeline {
                     dir('terraform') {
                       // some block
 
-                      sh '''
-                      cd terraform
-                      terraform init'''
+                      sh 'terraform init'
                     }
                 }
             }
