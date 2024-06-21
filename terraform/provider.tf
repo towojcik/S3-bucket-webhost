@@ -8,5 +8,10 @@ terraform {
 }
 
 provider "aws" {
+<<<<<<< HEAD
   region = "eu-east-1"
 }
+=======
+  region = "eu-central-1"
+}
+>>>>>>> 934d16a (Add Jenkinsfile)
