@@ -30,7 +30,13 @@ pipeline {
                     //                  string(credentialsId: 'AWS_SECRET_ACCESS_KEY', variable: 'AWS_SECRET_ACCESS_KEY')]) {
                     //     sh 'terraform init'
                     // }
-                    sh 'terraform init'
+                    dir('terraform') {
+                      // some block
+
+                      sh '''
+                      cd terraform
+                      terraform init'''
+                    }
                 }
             }
         }
