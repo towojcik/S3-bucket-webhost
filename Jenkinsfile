@@ -42,12 +42,15 @@ pipeline {
         stage('Terraform Workspace') {
             steps {
                 script {
+                  dir('terraform') {    
+
                     // Check if the Terraform workspace exists, create if not
                     def workspaceExists = sh(script: 'terraform workspace select ${TF_VAR_environment} || true', returnStatus: true) == 0
 
                     if (!workspaceExists) {
                         sh "terraform workspace new ${TF_VAR_environment}"
                     }
+                  }  
                 }
             }
         }
@@ -55,6 +58,7 @@ pipeline {
         stage('Terraform Operation') {
             steps {
                 script {
+                  dir('terraform') {
                     // Run Terraform based on the selected operation
                     switch(params.TERRAFORM_OPERATION) {
                         case 'plan':
@@ -70,6 +74,7 @@ pipeline {
                         default:
                             error "Invalid Terraform operation selected"
                     }
+                  }  
                 }
             }
         }
